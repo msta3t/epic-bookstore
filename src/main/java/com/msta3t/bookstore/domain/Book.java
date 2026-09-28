@@ -1,10 +1,15 @@
 package com.msta3t.bookstore.domain;
 
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+
+@Entity
 public class Book {
+    @Id
+    private String isbn;
     private String title;
     private String author;
     private int publicationYear;
-    private String isbn;
     private double price;
 
     public String getTitle() {
