@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <title>Add book</title>
 </head>
 
 <body>
@@ -13,7 +14,7 @@
         <table>
             <tr>
                 <th>ISBN:</th>
-                <td><input type="text" th:field="*{isbn}" /></td>
+                <td><input type="text" th:field="*{isbn}"/></td>
             </tr>
             <tr>
                 <th>Title:</th>
