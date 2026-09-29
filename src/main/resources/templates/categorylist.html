@@ -24,7 +24,7 @@
             <td><a class="btn btn-danger" th:href="@{/category/delete/{id}(id=${category.id})}">Delete</a></td>
         </tr>
     </table>
-    <a class="btn btn-success" th:href="@{/category/add}">Add category</a>
+    <div th:replace="~{addcategory::addCategoryComponent}"></div>
 </body>
 
 </html>
