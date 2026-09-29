@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/api/books")
+@RequestMapping("/api/v1/books")
 @RestController
 public class BookRestController {
     public BookRestController(BookRepository repository) {
