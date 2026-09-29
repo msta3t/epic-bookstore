@@ -1,6 +1,11 @@
 package com.msta3t.bookstore.domain;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 
 @Entity
@@ -11,6 +16,10 @@ public class Book {
     private String author;
     private int publicationYear;
     private double price;
+    @JsonIgnoreProperties("books")
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
 
     public String getTitle() {
         return title;
@@ -52,12 +61,21 @@ public class Book {
         this.price = price;
     }
 
-    public Book(String title, String author, int publicationYear, String isbn, double price) {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
+        this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
-        this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
     public Book() {
@@ -65,7 +83,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [title=" + title + ", author=" + author + ", publicationYear=" + publicationYear + ", isbn=" + isbn
+        return "Book [isbn=" + isbn + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
                 + ", price=" + price + "]";
     }
 }
