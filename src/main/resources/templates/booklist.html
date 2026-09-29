@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Book list</title>
 </head>
 
 <body>
-    <h1>Books</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Books</h1>
+        <a class="btn btn-info" th:href="@{/category/list}">Categories</a>
+    </div>
     <table class="table table-striped">
         <tr>
             <th>Title</th>
@@ -28,8 +31,8 @@
             <td th:text="${book.category?.name}"></td>
             <td th:text="${book.publicationYear}"></td>
             <td th:text="${book.price}"></td>
-            <td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${book.isbn})}">Edit</a></td>
-            <td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.isbn})}">Delete</a></td>
+            <td><a class="btn btn-primary" th:href="@{/book/edit/{id}(id=${book.isbn})}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{/book/delete/{id}(id=${book.isbn})}">Delete</a></td>
         </tr>
     </table>
     <a class="btn btn-success" th:href="@{/book/add}">Add book</a>

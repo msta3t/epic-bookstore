@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     <title>Edit book</title>
 </head>
 
@@ -25,6 +25,14 @@
                 <td><input type="text" th:field="*{author}" /></td>
             </tr>
             <tr>
+                <th>Category:</th>
+                <td><select id="categorylist" th:field="*{category}" class="form-select">
+                        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <th>Year:</th>
                 <td><input type="number" th:field="*{publicationYear}" /></td>
             </tr>
@@ -34,7 +42,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save" /></td>
+                <td><input type="submit" value="Save" class="btn btn-success"/></td>
             </tr>
         </table>
 
