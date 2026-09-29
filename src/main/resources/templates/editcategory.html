@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <title>Edit category</title>
+</head>
+
+<body>
+    <h1>Edit category</h1>
+    <form action="#" th:action="@{/category/save}" th:object="${category}" method="post">
+        <table>
+            <tr>
+                <th>ID:</th>
+                <td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" /></td>
+            </tr>
+        </table>
+
+        <div th:if="${#fields.hasAnyErrors()}" class="error" style="color: red; margin-top: 10px;">
+            Error submitting form. Check input.
+        </div>
+    </form>
+</body>
+
+</html>
