@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.msta3t.bookstore.domain.Book;
 import com.msta3t.bookstore.domain.BookRepository;
+import com.msta3t.bookstore.domain.Category;
+import com.msta3t.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -16,8 +18,12 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository repository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository) {
 		return (args) -> {
+			categoryRepository.save(new Category("Cybersecurity"));
+			categoryRepository.save(new Category("Computer Science"));
+			categoryRepository.save(new Category("Programming"));
+			
 			repository.save(new Book("Internet", "Mikko Hyppönen", 2021, "978-951-0-46443-4", 20.00));
 			repository.save(new Book("Structure and Interpretation of Computer Programs", "Harold Abelson and Gerald Jay Sussman", 1996, "978-0262510875", 80));
 			repository.save(new Book("The C Programming Language", "Brian Kernighan & Dennis Ritchie", 1988, "978-0131103627", 50));
