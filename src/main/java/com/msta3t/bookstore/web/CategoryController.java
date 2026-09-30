@@ -1,5 +1,6 @@
 package com.msta3t.bookstore.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,7 @@ public class CategoryController {
         return "editcategory";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteCategory(@PathVariable("id") Long id, Model model) {
         repository.deleteById(id);
