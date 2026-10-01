@@ -12,8 +12,8 @@
     <div class="d-flex flex-row align-items-center mb-3 p-3">
         <a class="btn btn-outline-primary me-2" th:href="@{/book/list}">Books</a>
         <a class="btn btn-primary btn-lg me-2">Categories</a>
-        <p class="ms-auto mt-auto">
-            <span sec:authentication="name"></span>
+        <p class="ms-auto mb-0 align-self-center">
+            <span class="fw-bold" sec:authentication="name"></span>
         </p>
         <form th:action="@{/logout}" method="post" class="ms-3">
             <button type="submit" class="btn btn-danger">Log out</button>
@@ -31,7 +31,7 @@
             <td th:text="${category.id}"></td>
             <td th:text="${category.name}"></td>
             <td><a class="btn btn-primary" th:href="@{/category/edit/{id}(id=${category.id})}">Edit</a></td>
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <div sec:authorize="hasAuthority('ADMIN')">
                 <td><a class="btn btn-danger" th:href="@{/category/delete/{id}(id=${category.id})}">Delete</a></td>
             </div>
         </tr>

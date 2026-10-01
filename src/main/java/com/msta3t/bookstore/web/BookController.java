@@ -52,7 +52,7 @@ public class BookController {
         return "editbook";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable("id") String id, Model model) {
         repository.deleteById(id);

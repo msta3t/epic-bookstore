@@ -45,7 +45,7 @@ public class CategoryController {
         return "editcategory";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteCategory(@PathVariable("id") Long id, Model model) {
         repository.deleteById(id);

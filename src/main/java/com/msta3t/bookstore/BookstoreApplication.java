@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.msta3t.bookstore.domain.AppUser;
+import com.msta3t.bookstore.domain.AppUserRepository;
 import com.msta3t.bookstore.domain.Book;
 import com.msta3t.bookstore.domain.BookRepository;
 import com.msta3t.bookstore.domain.Category;
@@ -18,8 +20,24 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository, AppUserRepository appUserRepository) {
 		return (args) -> {
+
+			AppUser user1 = new AppUser();
+			user1.setUsername("user");
+			user1.setPassword("$2a$10$C0dS/zZZEr27qGO5ETSZNexZ0yq2nVJ/wj3Y5fX6UWZ6b68Xe0XNy");
+			user1.setEmail("user@example.com");
+			user1.setRole("USER");
+
+			AppUser user2 = new AppUser();
+			user2.setUsername("admin");
+			user2.setPassword("$2a$10$C0dS/zZZEr27qGO5ETSZNexZ0yq2nVJ/wj3Y5fX6UWZ6b68Xe0XNy");
+			user2.setEmail("admin@example.com");
+			user2.setRole("ADMIN");
+
+			appUserRepository.save(user1);
+			appUserRepository.save(user2);
+
 			Category cyber = categoryRepository.save(new Category("Cybersecurity"));
 			Category cs = categoryRepository.save(new Category("Computer Science"));
 			Category prog = categoryRepository.save(new Category("Programming"));
