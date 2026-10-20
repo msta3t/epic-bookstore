@@ -18,7 +18,7 @@ public class CategoryController {
         this.repository = repository;
     }
 
-    private CategoryRepository repository;
+    private final CategoryRepository repository;
 
     @GetMapping("/list")
     public String getCategoryList(Model model) {

@@ -54,6 +54,13 @@ public class AppUser {
     public AppUser() {
     }
 
+    public AppUser(String username, String password, String email, String role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "AppUser [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email

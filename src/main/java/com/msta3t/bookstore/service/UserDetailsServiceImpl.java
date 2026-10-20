@@ -1,5 +1,6 @@
 package com.msta3t.bookstore.service;
 
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,18 +13,18 @@ import com.msta3t.bookstore.domain.AppUserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private AppUserRepository repository;
+    private final AppUserRepository repository;
 
     public UserDetailsServiceImpl(AppUserRepository repository) {
 		this.repository = repository;
 	}
 
+    @NullMarked
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser currentUser = repository.findAppUserByUsername(username);
-        UserDetails user = new org.springframework.security.core.userdetails.User(username, currentUser.getPassword(),
+        return new org.springframework.security.core.userdetails.User(username, currentUser.getPassword(),
                 AuthorityUtils.createAuthorityList(currentUser.getRole()));
-        return user;
     }
 
 }

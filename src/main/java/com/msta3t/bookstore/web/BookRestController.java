@@ -19,7 +19,7 @@ public class BookRestController {
         this.repository = repository;
     }
 
-    private BookRepository repository;
+    private final BookRepository repository;
 
     @GetMapping
     public @ResponseBody List<Book> restBookList() {

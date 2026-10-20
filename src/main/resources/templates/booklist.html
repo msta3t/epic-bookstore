@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="fi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
     <title>Book list</title>
 </head>
 
 <body class="m-3">
-    <div class="d-flex flex-row align-items-center mb-3 p-3">
-        <a class="btn btn-primary btn-lg me-2">Books</a>
-        <a class="btn btn-outline-primary" th:href="@{/category/list}">Categories</a>
-        <p class="ms-auto mb-0 align-self-center">
-            <span class="fw-bold" sec:authentication="name"></span>
-        </p>
-        <form th:action="@{/logout}" method="post" class="ms-3">
-            <button type="submit" class="btn btn-danger">Log out</button>
-        </form>
-    </div>
+<div class="d-flex flex-row align-items-center mb-3 p-3">
+    <a class="btn btn-primary btn-lg me-2">Books</a>
+    <a class="btn btn-outline-primary" th:href="@{/category/list}">Categories</a>
+    <p class="ms-auto mb-0 align-self-center">
+        <span class="fw-bold" sec:authentication="name"></span>
+    </p>
+    <form th:action="@{/logout}" method="post" class="ms-3">
+        <button type="submit" class="btn btn-danger">Log out</button>
+    </form>
+</div>
 
-    <table class="table table-striped">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>ISBN</th>
-            <th>Category</th>
-            <th>Year</th>
-            <th>Price</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.isbn}"></td>
-            <td th:text="${book.category?.name}"></td>
-            <td th:text="${book.publicationYear}"></td>
-            <td th:text="${book.price}"></td>
-            <td><a class="btn btn-primary" th:href="@{/book/edit/{id}(id=${book.isbn})}">Edit</a></td>
-            <td><a class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')"
-                    th:href="@{/book/delete/{id}(id=${book.isbn})}">Delete</a></td>
-        </tr>
-    </table>
-    <a class="btn btn-success" th:href="@{/book/add}">Add book</a>
+<table class="table table-striped">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Category</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.category?.name}"></td>
+        <td th:text="${book.publicationYear}"></td>
+        <td th:text="${book.price}"></td>
+        <td><a class="btn btn-primary" th:href="@{/book/edit/{id}(id=${book.isbn})}">Edit</a></td>
+        <td><a class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')"
+               th:href="@{/book/delete/{id}(id=${book.isbn})}">Delete</a></td>
+    </tr>
+</table>
+<a class="btn btn-success" th:href="@{/book/add}">Add book</a>
 </body>
 
 </html>

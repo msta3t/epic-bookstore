@@ -18,8 +18,8 @@ public class BookController {
         this.categoryRepository = categoryRepository;
     }
 
-    private BookRepository repository;
-    private CategoryRepository categoryRepository;
+    private final BookRepository repository;
+    private final CategoryRepository categoryRepository;
 
     @GetMapping("/index")
     public String getIndex() {
